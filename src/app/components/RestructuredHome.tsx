@@ -8,7 +8,7 @@ export default function RestructuredHome() {
         <Home />
       </div>
       <div className="block md:hidden">
-        <div className="mx-auto h-[4960px] w-[375px] max-w-full overflow-hidden">
+        <div className="mx-auto w-[375px] max-w-full overflow-hidden">
           <Responsive />
         </div>
       </div>

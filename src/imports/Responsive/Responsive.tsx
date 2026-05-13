@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import svgPaths from "./svg-k8b7wfeio7";
 import imgPropertyImage from "./ca3cfa9997b8fd30e32188eb326e9fbb800cb47b.png";
 import imgGizaLocation from "./7e2c62845d99af3b5cc593bec4fcfdc3fca3c0a7.png";
@@ -16,6 +17,46 @@ import imgFooterItemIconImage3 from "./ea1da9aad90e928392834075080b3816400de189.
 import imgFreeTransparentIPhoneAirMockupMockuuupsStudio from "./705950eb79a80e88e105e9529ddcbcbfdf7175cf.png";
 import imgContactForm from "./d0c6993bc587b46345cedc8b512ebee7108a8d44.png";
 import { imgGroup } from "./svg-igi7d";
+
+const searchPlaceholderPhrases = [
+  "Search for New Cairo...",
+  "Search for villas...",
+  "Search for compounds...",
+  "Search for developers...",
+  "Search for apartments under 8M...",
+];
+
+function useTypingPlaceholder(phrases: string[]) {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [characterCount, setCharacterCount] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = phrases[phraseIndex];
+    const isPhraseComplete = characterCount === currentPhrase.length;
+    const isPhraseDeleted = characterCount === 0;
+    const delay = isDeleting ? 42 : isPhraseComplete ? 1300 : 72;
+
+    const timeout = window.setTimeout(() => {
+      if (!isDeleting && isPhraseComplete) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isDeleting && isPhraseDeleted) {
+        setIsDeleting(false);
+        setPhraseIndex((current) => (current + 1) % phrases.length);
+        return;
+      }
+
+      setCharacterCount((current) => current + (isDeleting ? -1 : 1));
+    }, delay);
+
+    return () => window.clearTimeout(timeout);
+  }, [characterCount, isDeleting, phraseIndex, phrases]);
+
+  return phrases[phraseIndex].slice(0, characterCount);
+}
 
 function SearchNormal() {
   return (
@@ -40,13 +81,15 @@ function VuesaxLinearSearchNormal() {
 }
 
 function Input() {
+  const animatedPlaceholder = useTypingPlaceholder(searchPlaceholderPhrases);
+
   return (
     <div className="absolute bg-white content-stretch flex gap-[8px] h-[56px] items-center justify-center left-[15px] p-[12px] rounded-[8px] top-[188px] w-[313px]" data-name="Input">
       <div aria-hidden="true" className="absolute border border-[#e5e7eb] border-solid inset-0 pointer-events-none rounded-[8px]" />
       <div className="relative shrink-0 size-[24px]" data-name="search-normal">
         <VuesaxLinearSearchNormal />
       </div>
-      <p className="flex-[1_0_0] font-['Inter:Regular',sans-serif] font-normal leading-[20px] min-w-px not-italic relative text-[#4d5052] text-[14px]">Area, Developer, Compound</p>
+      <p className="flex-[1_0_0] font-['Inter:Regular',sans-serif] font-normal leading-[20px] min-w-px not-italic relative text-[#4d5052] text-[14px]">{animatedPlaceholder}</p>
     </div>
   );
 }
@@ -250,13 +293,12 @@ function FilterAndButton() {
   return (
     <div className="col-1 content-stretch flex items-center justify-between ml-0 mt-[16px] px-[28px] relative row-1 w-[375px]" data-name="Filter and Button">
       <Frame15 />
-      <div className="bg-[#4b5563] content-stretch flex flex-col gap-[7.2px] items-start px-[12.6px] py-[9px] relative rounded-[8999.1px] shrink-0" data-name="Component 8">
+      <button className="bg-[#4b5563] content-stretch flex size-[36px] items-center justify-center relative rounded-full shrink-0" data-name="Profile Button" type="button">
         <div aria-hidden="true" className="absolute border-[0.9px] border-solid border-white inset-0 pointer-events-none rounded-[8999.1px]" />
         <div className="flex flex-col font-['Inter:Semi_Bold',sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[12.6px] text-center text-white whitespace-nowrap">
           <p className="leading-[18px]">A</p>
         </div>
-        <Badges />
-      </div>
+      </button>
     </div>
   );
 }
@@ -276,7 +318,7 @@ function HeroText() {
 
 function HeroSection() {
   return (
-    <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-name="Hero Section">
+    <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] mt-[16px] place-items-start relative shrink-0" data-name="Hero Section">
       <PropertyImage />
       <FilterAndButton />
       <HeroText />
@@ -367,7 +409,7 @@ function LuxorLocation() {
 
 function LocationsList() {
   return (
-    <div className="content-stretch flex gap-[12px] items-start relative shrink-0 w-full" data-name="Locations List">
+    <div className="content-stretch flex gap-[12px] items-start overflow-x-auto overflow-y-hidden relative shrink-0 w-full [&::-webkit-scrollbar]:hidden" data-name="Locations List" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
       <GizaLocation />
       <AlexandriaLocation />
       <SharmElSheikhLocation />
@@ -1874,7 +1916,7 @@ function UnitItem2() {
 
 function RecommendedUnitsList() {
   return (
-    <div className="content-stretch flex gap-[16px] items-center relative shrink-0 w-full" data-name="Recommended Units List">
+    <div className="content-stretch flex gap-[16px] items-center overflow-x-auto overflow-y-hidden relative shrink-0 w-full [&::-webkit-scrollbar]:hidden" data-name="Recommended Units List" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
       <UnitItem />
       <UnitItem1 />
       <UnitItem2 />
@@ -3090,7 +3132,7 @@ function Footer1() {
 
 function Menu() {
   return (
-    <div className="absolute content-stretch flex flex-col gap-[36px] items-center left-0 top-[52px]" data-name="Menu">
+    <div className="content-stretch flex flex-col gap-[36px] items-center relative" data-name="Menu">
       <HeroSection />
       <LocationsSection />
       <CompoundsSection />
@@ -3151,16 +3193,8 @@ function Battery() {
 
 export default function Responsive() {
   return (
-    <div className="bg-white relative size-full" data-name="Responsive">
+    <div className="bg-white relative w-full" data-name="Responsive">
       <Menu />
-      <div className="-translate-x-1/2 absolute bg-white h-[44px] left-1/2 top-0 w-[375px]" data-name="Status Bar">
-        <div className="-translate-y-1/2 absolute flex flex-col font-['Inter:Medium',sans-serif] font-medium justify-center leading-[0] left-[24px] not-italic text-[#0f172a] text-[16px] top-[calc(50%+2px)] whitespace-nowrap">
-          <p className="leading-[16px]">9:41</p>
-        </div>
-        <MobileSignal />
-        <Wifi />
-        <Battery />
-      </div>
     </div>
   );
 }
