@@ -1256,9 +1256,9 @@ function Buttons1() {
   );
 }
 
-function Frame86() {
+function Frame86({ onUnitClick }: { onUnitClick?: () => void }) {
   return (
-    <div className="bg-white flex-[1_0_0] min-w-px relative rounded-[12px]">
+    <button className="bg-white cursor-pointer flex-[1_0_0] min-w-px relative rounded-[12px] text-left" onClick={onUnitClick} type="button">
       <div aria-hidden="true" className="absolute border border-[#f4f4f4] border-solid inset-0 pointer-events-none rounded-[12px]" />
       <div className="content-stretch flex flex-col gap-[12px] items-start p-[12px] relative size-full">
         <Frame32 />
@@ -1273,7 +1273,7 @@ function Frame86() {
         </div>
         <Buttons1 />
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -1641,9 +1641,9 @@ function Buttons2() {
   );
 }
 
-function Frame85() {
+function Frame85({ onUnitClick }: { onUnitClick?: () => void }) {
   return (
-    <div className="bg-white flex-[1_0_0] min-w-px relative rounded-[12px]">
+    <button className="bg-white cursor-pointer flex-[1_0_0] min-w-px relative rounded-[12px] text-left" onClick={onUnitClick} type="button">
       <div aria-hidden="true" className="absolute border border-[#f4f4f4] border-solid inset-0 pointer-events-none rounded-[12px]" />
       <div className="content-stretch flex flex-col gap-[12px] items-start p-[12px] relative size-full">
         <Frame33 />
@@ -1658,7 +1658,7 @@ function Frame85() {
         </div>
         <Buttons2 />
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -2026,9 +2026,9 @@ function Buttons3() {
   );
 }
 
-function Frame87() {
+function Frame87({ onUnitClick }: { onUnitClick?: () => void }) {
   return (
-    <div className="bg-white flex-[1_0_0] min-w-px relative rounded-[12px]">
+    <button className="bg-white cursor-pointer flex-[1_0_0] min-w-px relative rounded-[12px] text-left" onClick={onUnitClick} type="button">
       <div aria-hidden="true" className="absolute border border-[#f4f4f4] border-solid inset-0 pointer-events-none rounded-[12px]" />
       <div className="content-stretch flex flex-col gap-[12px] items-start p-[12px] relative size-full">
         <Frame36 />
@@ -2043,33 +2043,33 @@ function Frame87() {
         </div>
         <Buttons3 />
       </div>
-    </div>
+    </button>
   );
 }
 
-function Frame90() {
+function Frame90({ onUnitClick }: { onUnitClick?: () => void }) {
   return (
     <div className="content-stretch flex gap-[16px] items-center relative shrink-0 w-full">
-      <Frame86 />
-      <Frame85 />
-      <Frame87 />
+      <Frame86 onUnitClick={onUnitClick} />
+      <Frame85 onUnitClick={onUnitClick} />
+      <Frame87 onUnitClick={onUnitClick} />
     </div>
   );
 }
 
-function Frame120() {
+function Frame120({ onUnitClick }: { onUnitClick?: () => void }) {
   return (
     <div className="content-stretch flex flex-col items-end relative shrink-0 w-full">
-      <Frame90 />
+      <Frame90 onUnitClick={onUnitClick} />
     </div>
   );
 }
 
-function Frame93() {
+function Frame93({ onUnitClick }: { onUnitClick?: () => void }) {
   return (
     <div className="content-stretch flex flex-col gap-[24px] items-center relative shrink-0 w-full">
       <Frame84 />
-      <Frame120 />
+      <Frame120 onUnitClick={onUnitClick} />
     </div>
   );
 }
@@ -2610,7 +2610,7 @@ function Frame119() {
   );
 }
 
-function Frame94() {
+function Frame94({ onUnitClick }: { onUnitClick?: () => void }) {
   return (
     <div className="content-stretch flex flex-col gap-[64px] items-start mx-auto w-[1184px]">
       <div className="bg-white content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-full" data-name="Component 1">
@@ -2618,7 +2618,7 @@ function Frame94() {
         <Frame116 />
       </div>
       <Frame121 />
-      <Frame93 />
+      <Frame93 onUnitClick={onUnitClick} />
       <Frame142 />
       <Frame103 />
       <Frame119 />
@@ -2976,7 +2976,7 @@ function Input4() {
           <div className="relative shrink-0 size-[24px]" data-name="search-normal">
             <VuesaxLinearSearchNormal />
           </div>
-          <p className="flex-[1_0_0] font-['Inter:Regular',sans-serif] font-normal leading-[24px] min-w-px not-italic relative text-[#a6a7a9] text-[16px]">{animatedPlaceholder}</p>
+          <p className="flex-[1_0_0] font-['Inter:Regular',sans-serif] font-normal leading-[24px] min-w-px not-italic relative text-[#4d5052] text-[16px]">{animatedPlaceholder}</p>
         </div>
       </div>
     </div>
@@ -3318,11 +3318,11 @@ function Frame73() {
   );
 }
 
-export default function Home() {
+export default function Home({ onUnitClick }: { onUnitClick?: () => void }) {
   return (
     <div className="bg-white content-stretch flex flex-col gap-[96px] min-h-screen w-full" data-name="Home">
       <Frame73 />
-      <Frame94 />
+      <Frame94 onUnitClick={onUnitClick} />
       <div className="bg-black content-stretch flex flex-col items-start px-[114px] py-[71px] w-full" data-name="Footer">
         <Frame114 />
       </div>
