@@ -1,0 +1,14 @@
+
+> @figma/my-make-file@0.0.1 dev
+> vite --host 127.0.0.1
+
+Port 5173 is in use, trying another one...
+
+  [32m[1mVITE[22m v6.3.5[39m  [2mready in [0m[1m401[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5174[22m/[39m
+[2m10:13:20 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\PC\Downloads\Implement the design\src\imports\Home\Home.tsx, /src/styles/index.css[22m
+[2m10:13:31 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\PC\Downloads\Implement the design\src\imports\Home\Home.tsx, /src/styles/index.css[22m
+[2m10:14:33 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\PC\Downloads\Implement the design\src\imports\Home\Home.tsx, /src/styles/index.css[22m
+[2m11:21:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\PC\Downloads\Implement the design\src\imports\Home\Home.tsx, /src/styles/index.css[22m
+[2m11:21:54 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\PC\Downloads\Implement the design\src\imports\Home\Home.tsx, /src/styles/index.css[22m
